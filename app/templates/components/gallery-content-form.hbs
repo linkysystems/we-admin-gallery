@@ -2,12 +2,12 @@
   class="gallery-add-content"
   {{action "submit" content on="submit"}}
 >
-  <fieldset>
+{{!--   <fieldset>
     <div class="form-group">
-      <label>{{t 'form-gallery-name'}}*:</label>
+      <label>{{t 'form-gallery-name'}}:</label>
       {{input value=content.name name="name" class="form-control" placeholder=(t 'form-placeholder-gallery-content-name')}}
     </div>
-  </fieldset>
+  </fieldset> --}}
   <fieldset>
     {{#if (eq content.type 'image')}}
       <div class="form-group">

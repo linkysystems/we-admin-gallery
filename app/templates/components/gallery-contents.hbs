@@ -22,7 +22,6 @@
   <tr>
     <th>Conteúdo</th>
     <th>Ordem</th>
-    <th>Nome</th>
     <th>Ações</th>
   </tr>
 </thead>
@@ -39,9 +38,6 @@
             <button type="button" class="btn btn-sm btn-default" disabled>{{#if c.weight}}{{c.weight}}{{else}}0{{/if}}</button>
           <button type="button" class="btn btn-sm btn-default" disabled={{cantDecrease}} {{action 'decreaseWeight' c}}><i class="fa fa-arrow-down text-danger" aria-hidden="true"></i> {{#bs-tooltip placement="top"}}Diminuir a prioridade de exibição{{/bs-tooltip}}
           </button>
-        </td>
-        <td>
-          {{c.name}}
         </td>
         <td>
           <button {{action 'destroyContent' c}} type="button" class="btn btn-default btn-sm">
@@ -62,9 +58,6 @@
             <button type="button" class="btn btn-sm btn-default" disabled>{{#if c.weight}}{{c.weight}}{{else}}0{{/if}}</button>
           <button type="button" class="btn btn-sm btn-default" disabled={{cantDecrease}} {{action 'decreaseWeight' c}}><i class="fa fa-arrow-down text-danger" aria-hidden="true"></i> {{#bs-tooltip placement="top"}}Diminuir a prioridade de exibição{{/bs-tooltip}}
           </button>
-        </td>
-        <td>
-          {{c.name}}
         </td>
         <td>
           <button {{action 'destroyContent' c}} type="button" class="btn btn-default btn-sm">
