@@ -1,0 +1,32 @@
+<form
+  class="gallery-add-content"
+  {{action "submit" content on="submit"}}
+>
+  <fieldset>
+    <div class="form-group">
+      <label>{{t 'form-gallery-name'}}*:</label>
+      {{input value=content.name name="name" class="form-control" placeholder=(t 'form-placeholder-gallery-content-name')}}
+    </div>
+  </fieldset>
+  <fieldset>
+    {{#if (eq content.type 'image')}}
+      <div class="form-group">
+        <label>{{t 'form-content-featuredImage'}}:</label>
+        {{image-uploader value=content.image}}
+      </div>
+    {{/if}}
+    {{#if (eq content.type 'video')}}
+      <div class="form-group">
+        <label>Vídeo:</label>
+        {{input type="url" value=content.videoUrl name="videoUrl" class="form-control" placeholder="https:..."}}
+        <p class="help-block">URL para o vídeo do youtube</p>
+      </div>
+    {{/if}}
+  </fieldset>
+  <fieldset>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+      <button type="button" class="btn btn-default btn-sm" {{action 'cancel' content}}>Cancelar</button>
+    </div>
+  </fieldset>
+</form>

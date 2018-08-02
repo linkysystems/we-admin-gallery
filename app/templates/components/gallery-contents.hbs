@@ -1,0 +1,78 @@
+<div class="actions">
+{{#if newContent}}
+  {{gallery-content-form
+    content=newContent
+    submit='saveContent'
+    cancel='cancelAddContent'
+  }}
+{{else}}
+
+  {{#if gallery.allowImage}}
+    <button type="button" class="btn btn-default" {{action 'addContent'}}>Adicionar imagem</button>
+  {{/if}}
+  {{#if gallery.allowVideo}}
+    <button type="button" class="btn btn-default" {{action 'addContent' 'video'}}>Adicionar vídeo</button>
+  {{/if}}
+
+{{/if}}
+</div>
+
+<table class="table gallery-contents-list">
+<thead>
+  <tr>
+    <th>Conteúdo</th>
+    <th>Ordem</th>
+    <th>Nome</th>
+    <th>Ações</th>
+  </tr>
+</thead>
+<tbody>
+  {{#each sortedContents as |c|}}
+    {{#if (eq c.type 'image')}}
+      <tr class="gallery-content gallery-content-image">
+        <td>
+          {{we-image file=c.image size="thumbnail"  class="img-thumbnail"  width="100"}}
+        </td>
+        <td>
+          <button type="button" class="btn btn-sm btn-default" {{action 'increaseWeight' c}}><i class="fa fa-arrow-up text-success" aria-hidden="true"></i> {{#bs-tooltip placement="top"}}Aumentar a prioridade de exibição{{/bs-tooltip}}
+          </button>
+            <button type="button" class="btn btn-sm btn-default" disabled>{{#if c.weight}}{{c.weight}}{{else}}0{{/if}}</button>
+          <button type="button" class="btn btn-sm btn-default" disabled={{cantDecrease}} {{action 'decreaseWeight' c}}><i class="fa fa-arrow-down text-danger" aria-hidden="true"></i> {{#bs-tooltip placement="top"}}Diminuir a prioridade de exibição{{/bs-tooltip}}
+          </button>
+        </td>
+        <td>
+          {{c.name}}
+        </td>
+        <td>
+          <button {{action 'destroyContent' c}} type="button" class="btn btn-default btn-sm">
+            <i class="glyphicon glyphicon-remove text-danger"></i> Deletar
+          </button>
+        </td>
+      </tr>
+    {{/if}}
+
+    {{#if (eq c.type 'video')}}
+      <tr class="gallery-content gallery-content-image">
+        <td>
+          <img src="{{c.videoThumbnailUrl}}" class="img-thumbnail" width="100">
+        </td>
+        <td>
+          <button type="button" class="btn btn-sm btn-default" {{action 'increaseWeight' c}}><i class="fa fa-arrow-up text-success" aria-hidden="true"></i> {{#bs-tooltip placement="top"}}Aumentar a prioridade de exibição{{/bs-tooltip}}
+          </button>
+            <button type="button" class="btn btn-sm btn-default" disabled>{{#if c.weight}}{{c.weight}}{{else}}0{{/if}}</button>
+          <button type="button" class="btn btn-sm btn-default" disabled={{cantDecrease}} {{action 'decreaseWeight' c}}><i class="fa fa-arrow-down text-danger" aria-hidden="true"></i> {{#bs-tooltip placement="top"}}Diminuir a prioridade de exibição{{/bs-tooltip}}
+          </button>
+        </td>
+        <td>
+          {{c.name}}
+        </td>
+        <td>
+          <button {{action 'destroyContent' c}} type="button" class="btn btn-default btn-sm">
+            <i class="glyphicon glyphicon-remove text-danger"></i> Deletar
+          </button>
+        </td>
+      </tr>
+    {{/if}}
+  {{/each}}
+</tbody>
+</table>
