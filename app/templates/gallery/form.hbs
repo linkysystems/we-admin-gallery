@@ -17,8 +17,17 @@
               {{input value=model.record.name name="name" class="form-control" placeholder=(t 'form-placeholder-gallery-name') required="required"}}
             </div>
             <div class="form-group">
+              <label>{{t 'Description'}}:</label>
+              {{textarea value=model.record.description class="form-control"}}
+              <p class="help-block">Descreva o conteúdo desta galeria</p>
+            </div>
+            <div class="form-group">
               <label>URL de acesso*:</label>
-              {{input name="setAlias" value=model.alias.alias class="form-control" placeholder="Ex /sobre" }}
+              {{#if model.record.id}}
+                {{input name="setAlias" value=model.alias.alias class="form-control" placeholder="Ex /sobre"}}
+              {{else}}
+                {{input name="setAlias" value=model.alias.alias class="form-control" placeholder="Ex /sobre" disabled="disabled"}}
+              {{/if}}
               <p class="help-block">Url limpa de acesso ao conteúdo, use um texto simples sem espaço ou acentuação. Ex /sobre</p>
             </div>
           </fieldset>
