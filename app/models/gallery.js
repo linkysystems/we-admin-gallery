@@ -20,5 +20,9 @@ export default DS.Model.extend({
   contents: DS.hasMany('gallery-content', {
     async: true,
     inverse:'gallery'
-  })
+  }),
+  date: DS.attr('date'),
+  setAlias: DS.attr(),
+  createdAt: DS.attr('date'),
+  updatedAt: DS.attr('date')
 });

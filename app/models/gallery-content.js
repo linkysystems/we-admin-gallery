@@ -20,5 +20,8 @@ export default DS.Model.extend({
   gallery: DS.belongsTo('gallery', {
     async: true,
     inverse:'contents'
-  })
+  }),
+  setAlias: DS.attr(),
+  createdAt: DS.attr('date'),
+  updatedAt: DS.attr('date')
 });

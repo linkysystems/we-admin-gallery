@@ -50,6 +50,13 @@
                 {{term}}
               {{/power-select-multiple}}
             </div>
+            <div class="form-group">
+              <label>{{t 'form-gallery-content-date'}}:</label>
+              {{date-time-picker
+                onChange=(action "changeDate" model.record "date")
+                date=(readonly model.record.date)
+              }}
+            </div>
             <h5>Tipos de conteúdo:</h5>
             <div class="checkbox">
               <label>
